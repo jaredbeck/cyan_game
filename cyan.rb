@@ -1,11 +1,42 @@
 require 'gosu'
+require_relative 'player'
 
-class MyWindow < Gosu::Window
+class CyanWindow < Gosu::Window
   def initialize
-    super(640, 480, false)
-    self.caption = 'Hello World!'
+    h = Gosu.available_height
+    w = Gosu.available_width
+    super(w, h, false)
+    self.caption = 'Cyan'
+    @player = Player.new(self)
+    @player.warp(w / 2, h / 2)
+  end
+
+  def update
+    if button_down? Gosu::KbLeft
+      @player.accelerate(-1, 0)
+    end
+    if button_down? Gosu::KbRight
+      @player.accelerate(+1, 0)
+    end
+    if button_down? Gosu::KbUp
+      @player.accelerate(0, -1)
+    end
+    if button_down? Gosu::KbDown
+      @player.accelerate(0, +1)
+    end
+    @player.move
+  end
+
+  def draw
+    @player.draw
+  end
+
+  def button_down(id)
+    if id == Gosu::KbEscape
+      close
+    end
   end
 end
 
-window = MyWindow.new
+window = CyanWindow.new
 window.show
