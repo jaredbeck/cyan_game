@@ -1,6 +1,12 @@
 Cyan
 ====
 
+Play
+----
+
+1. ruby cyan.rb
+1. arrow keys
+
 Dev
 ----
 

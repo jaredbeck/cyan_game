@@ -2,15 +2,19 @@ require_relative 'circle'
 
 class Entity
 
-  attr_reader :radius, :window, :z
+  attr_reader :radius, :window, :x, :y, :z
 
   def initialize(window, color)
     @window = window
-    @radius = 50
-    @image = Gosu::Image.new(window, Circle.new(radius, color), false)
+    @radius = @max_radius = 50
+    @image = Gosu::Image.new(window, Circle.new(@max_radius, color), false)
     @x = @y = @vel_x = @vel_y = 0.0
     @score = 0
     @z = 0.9
+  end
+
+  def damage(d)
+    @radius -= d
   end
 
   def warp(x, y)
@@ -18,8 +22,8 @@ class Entity
   end
 
   def accelerate(dx, dy)
-    @vel_x += 1 * dx
-    @vel_y += 1 * dy
+    @vel_x += 0.5 * dx
+    @vel_y += 0.5 * dy
   end
 
   def move
@@ -36,7 +40,8 @@ class Entity
   end
 
   def draw
-    @image.draw(@x - radius, @y - radius, z)
+    scale_factor = radius.to_f / @max_radius
+    @image.draw(@x - radius, @y - radius, z, scale_factor, scale_factor)
   end
 
 end
