@@ -1,7 +1,8 @@
 class Circle
   attr_reader :columns, :rows
 
-  def initialize radius
+  def initialize(radius, color)
+    packed_binary_rgb = color.pack
     @columns = @rows = radius * 2
     lower_half = (0...radius).map do |y|
       x = Math.sqrt(radius**2 - y**2).round
@@ -9,7 +10,7 @@ class Circle
       "#{right_half.reverse}#{right_half}"
     end.join
     @blob = lower_half.reverse + lower_half
-    @blob.gsub!(/./) { |alpha| "\x00\xff\xff#{alpha}"}
+    @blob.gsub!(/./) { |alpha| "#{packed_binary_rgb}#{alpha}"}
   end
 
   def to_blob

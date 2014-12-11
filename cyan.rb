@@ -1,13 +1,17 @@
 require 'gosu'
+require_relative 'color'
 require_relative 'player'
 
 class CyanWindow < Gosu::Window
+
+  CYAN = Color.new(0, 255, 255)
+
   def initialize
     h = Gosu.available_height
     w = Gosu.available_width
     super(w, h, false)
     self.caption = 'Cyan'
-    @player = Player.new(self)
+    @player = Player.new(self, CYAN)
     @player.warp(w / 2, h / 2)
   end
 
