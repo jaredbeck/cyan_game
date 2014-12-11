@@ -2,7 +2,7 @@ require_relative 'circle'
 
 class Entity
 
-  attr_reader :radius, :window
+  attr_reader :radius, :window, :z
 
   def initialize(window, color)
     @window = window
@@ -10,6 +10,7 @@ class Entity
     @image = Gosu::Image.new(window, Circle.new(radius, color), false)
     @x = @y = @vel_x = @vel_y = 0.0
     @score = 0
+    @z = 0.9
   end
 
   def warp(x, y)
@@ -35,7 +36,7 @@ class Entity
   end
 
   def draw
-    @image.draw(@x - radius, @y - radius, 1)
+    @image.draw(@x - radius, @y - radius, z)
   end
 
 end
