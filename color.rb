@@ -22,4 +22,7 @@ class Color
     raise TypeError if args.any? { |a| a < 0 || a > 255 }
   end
 
+  CYAN = new(0, 255, 255)
+  YELLOW = new(255, 255, 0)
+
 end

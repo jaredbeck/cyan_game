@@ -4,9 +4,6 @@ require_relative 'player'
 
 class CyanWindow < Gosu::Window
 
-  CYAN = Color.new(0, 255, 255)
-  YELLOW = Color.new(255, 255, 0)
-
   STATE_GAME_ON = 1
   STATE_GAME_OVER = 2
 
@@ -16,10 +13,10 @@ class CyanWindow < Gosu::Window
     super(w, h, false)
     self.caption = 'Cyan'
 
-    @player = Player.new(self, CYAN)
+    @player = Player.new(self, Color::CYAN)
     @player.warp(w / 3, h / 2)
 
-    @boss = Entity.new(self, YELLOW)
+    @boss = Entity.new(self, Color::YELLOW)
     @boss.warp(w * (2.0 / 3), h / 2)
 
     @font = Gosu::Font.new(self, Gosu::default_font_name, 20)
