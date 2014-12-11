@@ -1,6 +1,5 @@
 require 'gosu'
-require_relative 'color'
-require_relative 'player'
+require_relative 'world'
 
 class CyanWindow < Gosu::Window
 
@@ -13,47 +12,23 @@ class CyanWindow < Gosu::Window
     super(w, h, false)
     self.caption = 'Cyan'
 
-    @player = Player.new(self, Color::CYAN)
-    @player.warp(w / 3, h / 2)
-
-    @boss = Entity.new(self, Color::YELLOW)
-    @boss.warp(w * (2.0 / 3), h / 2)
+    @world = World.new(self)
 
     @font = Gosu::Font.new(self, Gosu::default_font_name, 20)
     @state = STATE_GAME_ON
   end
 
   def update
-    if @player.radius <= 0
+    if @world.game_over?
       @state = STATE_GAME_OVER
     end
 
-    @d = Gosu.distance(@player.x, @player.y, @boss.x, @boss.y)
-    if [@player.radius, @boss.radius].max > @d
-      @player.damage(1)
-      @boss.damage(1)
-    end
-
-    if button_down? Gosu::KbLeft
-      @player.accelerate(-1, 0)
-    end
-    if button_down? Gosu::KbRight
-      @player.accelerate(+1, 0)
-    end
-    if button_down? Gosu::KbUp
-      @player.accelerate(0, -1)
-    end
-    if button_down? Gosu::KbDown
-      @player.accelerate(0, +1)
-    end
-    @player.move
+    @world.update
   end
 
   def draw
-    @player.draw
-    @boss.draw
-    debug_str = '(%d, %d, %d) (%d, %d, %d) %d' % [@player.x, @player.y, @player.radius, @boss.x, @boss.y, @boss.radius, @d]
-    @font.draw(debug_str, 10, 10, 1, 1.0, 1.0, 0xffffff00)
+    @world.draw
+    @font.draw(@world.debug_str, 10, 10, 1, 1.0, 1.0, 0xffffff00)
 
     if @state == STATE_GAME_OVER
       @font.draw('GAME OVER', width / 2, height / 2, 1, 1.0, 1.0, 0xffffff00)
