@@ -1,7 +1,5 @@
 class Color
 
-  attr_reader :r, :g, :b
-
   def initialize(r, g, b)
     assert_unsigned_8_bit(r, g, b)
     @r, @g, @b = r, g, b
@@ -13,11 +11,14 @@ class Color
   # so that the packed string may be easily concatenated with
   # other strings, particularly string literals.
   def pack
-    [r, g, b].pack('C*').force_encoding('utf-8')
+    [@r, @g, @b].pack('C*').force_encoding('utf-8')
   end
 
+  # Combine four 8-bit unsigned ints into one 32-bit unsigned int.
+  # (http://bit.ly/1zWV0N5)  The most significant byte is actually
+  # alpha, which is not what you'd expect from the acronym RGBA.
   def to_i
-    [255, r, g, b].pack('C*').unpack('L')[0]
+    255 << 24 | @r << 16 | @g << 8 | @b
   end
 
   private
