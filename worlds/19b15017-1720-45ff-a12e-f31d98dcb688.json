@@ -1,0 +1,17 @@
+{
+  "name": "Tutorial 1",
+  "entities": [
+    {
+      "color": {
+        "r": 255,
+        "g": 255,
+        "b": 0
+      },
+      "coordinates": {
+        "distance": 0.5,
+        "radians": 0
+      },
+      "radius": 50
+    }
+  ]
+}

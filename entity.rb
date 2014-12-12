@@ -2,10 +2,11 @@ require_relative 'circle'
 
 class Entity
 
-  attr_reader :radius, :window, :x, :y, :z
+  attr_reader :coordinates, :radius, :window, :x, :y, :z
 
-  def initialize(window, color)
+  def initialize(window, color, coordinates = {})
     @window = window
+    @coordinates = coordinates
     @radius = @max_radius = 50
     @image = Gosu::Image.new(window, Circle.new(@max_radius, color), false)
     @x = @y = @vel_x = @vel_y = 0.0
