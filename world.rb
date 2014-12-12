@@ -77,7 +77,7 @@ class World
       @player.accelerate(0, +1)
     end
 
-    @player.move
+    @player.move(@window)
   end
 
 end

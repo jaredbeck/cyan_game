@@ -2,15 +2,13 @@ require_relative 'circle'
 
 class Entity
 
-  attr_reader :coordinates, :radius, :window, :x, :y, :z
+  attr_reader :coordinates, :radius, :x, :y
 
   def initialize(window, color, coordinates = {})
-    @window = window
     @coordinates = coordinates
     @radius = @max_radius = 50
     @image = Gosu::Image.new(window, Circle.new(@max_radius, color), false)
     @x = @y = @vel_x = @vel_y = 0.0
-    @score = 0
     @z = 0.9
   end
 
@@ -27,7 +25,7 @@ class Entity
     @vel_y += 0.5 * dy
   end
 
-  def move
+  def move(window)
     @x += @vel_x
     @y += @vel_y
 
@@ -42,7 +40,7 @@ class Entity
 
   def draw
     scale_factor = radius.to_f / @max_radius
-    @image.draw(@x - radius, @y - radius, z, scale_factor, scale_factor)
+    @image.draw(@x - radius, @y - radius, @z, scale_factor, scale_factor)
   end
 
 end
