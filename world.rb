@@ -5,7 +5,7 @@ require_relative 'player'
 
 class World
 
-  attr_reader :window
+  attr_reader :subtitle, :title, :window
 
   def initialize(window, file)
     @window = window
@@ -16,10 +16,13 @@ class World
     @player.warp(w / 2, h / 2)
 
     parsed = JSON.parse(file.read)
-    window.caption = parsed['name']
+    @title = parsed['title']
+    @subtitle = parsed['subtitle']
+    window.caption = @title
 
     @entities = parsed['entities'].map do |e|
-      Entity.new(window, Color::YELLOW, e['coordinates'])
+      rgb = e['color'].values_at(*%w[r g b])
+      Entity.new(window, Color.new(*rgb), e['coordinates'])
     end
 
     @entities.each do |e|

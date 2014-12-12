@@ -16,6 +16,10 @@ class Color
     [r, g, b].pack('C*').force_encoding('utf-8')
   end
 
+  def to_i
+    [255, r, g, b].pack('C*').unpack('L')[0]
+  end
+
   private
 
   def assert_unsigned_8_bit(*args)
@@ -23,6 +27,7 @@ class Color
   end
 
   CYAN = new(0, 255, 255)
+  WHITE = new(255, 255, 255)
   YELLOW = new(255, 255, 0)
 
 end
