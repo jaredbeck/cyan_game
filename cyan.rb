@@ -1,3 +1,4 @@
+require 'active_support'
 require 'gosu'
 require 'pry'
 require_relative 'lib/cyan_game/quotations'
@@ -6,6 +7,7 @@ require_relative 'lib/cyan_game/world'
 
 module CyanGame
   class Window < Gosu::Window
+    include ActiveSupport::NumberHelper
 
     STATE_GAME_OVER = 1
     STATE_PLAY = 2
@@ -52,13 +54,13 @@ module CyanGame
           draw_quotation(@quotation)
         when STATE_PLAY
           @world.draw
-          @font.draw(@world.debug_str, 10, 10, 1, 1.0, 1.0, Color::WHITE.to_i)
         when STATE_GAME_OVER
           draw_centered_text('GAME OVER', 0, -20)
           draw_centered_text('We\'ll meet again someday soon.', 0, +20)
         when STATE_VICTORY
           draw_centered_text('VICTORY!', 0, -20)
-          draw_centered_text('Is this what we wished for?', 0, +20)
+          draw_centered_text("Score: #{number_to_delimited(@world.score)}", 0, 0)
+          draw_centered_text('Is this what we wished for?', 0, +40)
         else
           raise Errors::InvalidGameState
       end

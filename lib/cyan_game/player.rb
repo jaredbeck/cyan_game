@@ -44,5 +44,9 @@ module CyanGame
       @vel_y *= 0.50
     end
 
+    def score
+      (@diameter * 1_000_000_000).to_i
+    end
+
   end
 end

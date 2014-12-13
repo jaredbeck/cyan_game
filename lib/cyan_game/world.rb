@@ -35,10 +35,6 @@ module CyanGame
       @player.change_color
     end
 
-    def debug_str
-      '(%d, %d, %d, %d)' % [@player.x, @player.y, @player.radius, @entities.length]
-    end
-
     def draw
       @player.draw
       @entities.each(&:draw)
@@ -57,6 +53,10 @@ module CyanGame
       @entities.delete_if { |e|
         e.diameter <= 0
       }
+    end
+
+    def score
+      @player.score
     end
 
     def update

@@ -26,9 +26,10 @@ module CyanGame
       end
 
       # Given two colors, returns the approximate relationship
-      # between them.
+      # between them.  Note that healing is twice as potent (+2)
+      # as damage (+1), because we think that might be more fun.
       def rel(c1, c2)
-        min_dist(c1, c2) <= PI_OVER_2 ? +1 : -1
+        min_dist(c1, c2) <= PI_OVER_2 ? +2 : -1
       end
 
       private
