@@ -10,6 +10,7 @@ module CyanGame
     STATE_GAME_OVER = 1
     STATE_PLAY = 2
     STATE_WORLD_READY = 3
+    STATE_VICTORY = 4
 
     attr_reader :font
 
@@ -28,8 +29,12 @@ module CyanGame
       case @state
         when STATE_PLAY
           @world.update
-          @state = STATE_GAME_OVER if @world.game_over?
-        when STATE_GAME_OVER, STATE_WORLD_READY
+          if @world.victory?
+            @state = STATE_VICTORY
+          elsif @world.game_over?
+            @state = STATE_GAME_OVER
+          end
+        when STATE_GAME_OVER, STATE_WORLD_READY, STATE_VICTORY
           # noop
         else
           raise Errors::InvalidGameState
@@ -46,6 +51,9 @@ module CyanGame
         when STATE_GAME_OVER
           draw_centered_text('GAME OVER', 0, -20)
           draw_centered_text('We\'ll meet again someday soon.', 0, +20)
+        when STATE_VICTORY
+          draw_centered_text('VICTORY!', 0, -20)
+          draw_centered_text('Is this what we wished for?', 0, +20)
         else
           raise Errors::InvalidGameState
       end
@@ -67,7 +75,7 @@ module CyanGame
       case id
         when Gosu::KbEscape
           case @state
-            when STATE_WORLD_READY, STATE_GAME_OVER
+            when STATE_WORLD_READY, STATE_GAME_OVER, STATE_VICTORY
               close
             when STATE_PLAY
               ready
@@ -80,7 +88,7 @@ module CyanGame
           case @state
             when STATE_WORLD_READY
               play
-            when STATE_GAME_OVER
+            when STATE_GAME_OVER, STATE_VICTORY
               random_world
               ready
             else

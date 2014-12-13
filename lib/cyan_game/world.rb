@@ -90,5 +90,9 @@ module CyanGame
       @player.move(@window)
     end
 
+    def victory?
+      @entities.empty?
+    end
+
   end
 end
