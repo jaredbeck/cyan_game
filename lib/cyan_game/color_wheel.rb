@@ -47,7 +47,7 @@ module CyanGame
       # between them, e.g. red and green are `:complementary`.
       def rel(c1, c2)
         dist = min_dist(c1, c2)
-        if (dist - 2 * PI_OVER_3).abs < PI_OVER_3
+        if dist >= 1.99 * PI_OVER_3
           :complementary # approximately speaking
         elsif dist < PI_OVER_3
           :adjacent # similar concept to "analogous colors"

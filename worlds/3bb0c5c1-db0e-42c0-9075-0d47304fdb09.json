@@ -2,19 +2,40 @@
   "title": "Tutorial",
   "entities": [
     {
+      "comment": "red",
+      "color": { "r": 255, "g": 0, "b": 0 },
+      "coordinates": { "distance": 0.5, "radians": 1.047 },
+      "radius": 120
+    },
+    {
+      "comment": "blue",
+      "color": { "r": 0, "g": 0, "b": 255 },
+      "coordinates": { "distance": 0.5, "radians": 3.142 },
+      "radius": 120
+    },
+    {
+      "comment": "green",
+      "color": { "r": 0, "g": 255, "b": 0 },
+      "coordinates": { "distance": 0.5, "radians": 5.236 },
+      "radius": 120
+    },
+    {
+      "comment": "yellow",
       "color": { "r": 255, "g": 255, "b": 0 },
       "coordinates": { "distance": 0.5, "radians": 0.0 },
-      "radius": 50
+      "radius": 80
     },
     {
+      "comment": "magenta",
       "color": { "r": 255, "g": 0, "b": 255 },
       "coordinates": { "distance": 0.5, "radians": 2.09 },
-      "radius": 50
+      "radius": 80
     },
     {
+      "comment": "cyan",
       "color": { "r": 0, "g": 255, "b": 255 },
       "coordinates": { "distance": 0.5, "radians": 4.19 },
-      "radius": 50
+      "radius": 80
     }
   ]
 }

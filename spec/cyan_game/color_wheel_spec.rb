@@ -69,13 +69,20 @@ describe CyanGame::ColorWheel do
       azure =       color(000, 127, 255)
       spring =      color(000, 255, 127)
 
-      # complementary
+      # complementary (roughly speaking)
       expect(w.rel(red, blue)).to eq(:complementary)
+      expect(w.rel(red, cyan)).to eq(:complementary)
       expect(w.rel(red, green)).to eq(:complementary)
       expect(w.rel(green, blue)).to eq(:complementary)
-      expect(w.rel(yellow, magenta)).to eq(:complementary)
-      expect(w.rel(yellow, cyan)).to eq(:complementary)
-      expect(w.rel(magenta, cyan)).to eq(:complementary)
+      expect(w.rel(green, magenta)).to eq(:complementary)
+      expect(w.rel(green, red)).to eq(:complementary)
+      expect(w.rel(blue, red)).to eq(:complementary)
+      expect(w.rel(blue, yellow)).to eq(:complementary)
+      expect(w.rel(blue, green)).to eq(:complementary)
+
+      expect(w.rel(cyan, magenta)).to eq(:complementary)
+      expect(w.rel(cyan, red)).to eq(:complementary)
+      expect(w.rel(cyan, yellow)).to eq(:complementary)
 
       # adjacent to primary
       expect(w.rel(green, chartreuse)).to eq(:adjacent)

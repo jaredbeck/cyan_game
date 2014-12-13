@@ -13,7 +13,7 @@ class World
     w = window.width
     h = window.height
 
-    @player = Player.new(window, CyanGame::Color::CYAN)
+    @player = Player.new(window)
     @player.warp(w / 2, h / 2)
 
     parsed = JSON.parse(file.read)
@@ -22,8 +22,7 @@ class World
     window.caption = @title
 
     @entities = parsed['entities'].map do |e|
-      rgb = e['color'].values_at(*%w[r g b])
-      Entity.new(window, CyanGame::Color.new(*rgb), e['coordinates'])
+      Entity.new(window, e)
     end
 
     @entities.each do |e|
