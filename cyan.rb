@@ -1,5 +1,6 @@
 require 'gosu'
 require 'pry'
+require_relative 'lib/cyan_game/quotations'
 require_relative 'errors'
 require_relative 'world'
 
@@ -17,9 +18,10 @@ module Cyan
       w = Gosu.available_width
       super(w, h, false)
       self.caption = 'Cyan'
+      @quotations = CyanGame::Quotations.new
       @font = Gosu::Font.new(self, Gosu::default_font_name, 20)
       random_world
-      @state = STATE_WORLD_READY
+      ready
     end
 
     def update
@@ -37,8 +39,7 @@ module Cyan
     def draw
       case @state
         when STATE_WORLD_READY
-          draw_centered_text(@world.title, 0, -20)
-          draw_centered_text(@world.subtitle, 0, +20)
+          draw_quotation(@quotation)
         when STATE_PLAY
           @world.draw
         when STATE_GAME_OVER
@@ -47,6 +48,12 @@ module Cyan
         else
           raise Cyan::Errors::InvalidGameState
       end
+    end
+
+    def draw_quotation(q)
+      draw_centered_text(q['text'].gsub("\n", ' '), 0, -40)
+      draw_centered_text(q['author'].gsub("\n", ' '), 0, 0)
+      draw_centered_text(q['source'].gsub("\n", ' '), 0, +20)
     end
 
     def draw_centered_text(str, off_x, off_y)
@@ -96,6 +103,7 @@ module Cyan
     end
 
     def ready
+      @quotation = @quotations.sample
       @state = STATE_WORLD_READY
     end
 
