@@ -15,6 +15,18 @@ class Player < Entity
     @vel_y += 0.5 * dy
   end
 
+  def change_color
+    case @color
+      when CyanGame::Color::CYAN
+        @color = CyanGame::Color::YELLOW
+      when CyanGame::Color::YELLOW
+        @color = CyanGame::Color::MAGENTA
+      else
+        @color = CyanGame::Color::CYAN
+    end
+    rebuild_image
+  end
+
   def move(window)
     # accell
     @x += @vel_x

@@ -2,7 +2,8 @@ require_relative 'circle'
 
 class Entity
 
-  attr_reader :color, :coordinates, :diameter, :x, :y
+  attr_accessor :color
+  attr_reader :coordinates, :diameter, :x, :y
 
   def initialize(window, attr = {})
     @window = window
@@ -42,6 +43,11 @@ class Entity
 
   def image
     @_image ||= Gosu::Image.new(@window, Circle.new(@max_diameter / 2, color), false)
+  end
+
+  def rebuild_image
+    # TODO: duplicated code with `image`
+    @_image = Gosu::Image.new(@window, Circle.new(@max_diameter / 2, color), false)
   end
 
   # Given the `window` and a timestamp `t`, move the entity

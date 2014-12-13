@@ -30,6 +30,10 @@ class World
     @entities.each do |e| e.move(window, @t) end
   end
 
+  def change_player_color
+    @player.change_color
+  end
+
   def debug_str
     '(%d, %d, %d, %d)' % [@player.x, @player.y, @player.radius, @entities.length]
   end
