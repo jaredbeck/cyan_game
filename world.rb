@@ -30,6 +30,10 @@ class World
     @entities.each do |e| e.move(window, @t) end
   end
 
+  def debug_str
+    '(%d, %d, %d, %d)' % [@player.x, @player.y, @player.radius, @entities.length]
+  end
+
   def draw
     @player.draw
     @entities.each(&:draw)

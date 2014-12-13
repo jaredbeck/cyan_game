@@ -42,6 +42,7 @@ module Cyan
           draw_quotation(@quotation)
         when STATE_PLAY
           @world.draw
+          @font.draw(@world.debug_str, 10, 10, 1, 1.0, 1.0, CyanGame::Color::WHITE.to_i)
         when STATE_GAME_OVER
           draw_centered_text('GAME OVER', 0, -20)
           draw_centered_text('We\'ll meet again someday soon.', 0, +20)
