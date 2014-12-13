@@ -41,8 +41,16 @@ class World
   end
 
   def hit(e1, e2)
-    e1.damage(1)
-    e2.damage(1)
+    case CyanGame::ColorWheel.rel(e1.color, e2.color)
+      when :complementary
+        e1.damage(1)
+        e2.damage(1)
+      when :adjacent
+        e1.heal(1)
+        e2.damage(1)
+      else
+        # noop
+    end
   end
 
   def polar_to_cartesian(coordinates, window)
@@ -60,7 +68,7 @@ class World
   def update
     @entities.each do |e|
       d = Gosu.distance(@player.x, @player.y, e.x, e.y)
-      if d < @player.radius + e.radius
+      if d <= @player.radius + e.radius
         hit(@player, e)
       end
     end

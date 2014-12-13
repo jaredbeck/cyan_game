@@ -14,7 +14,11 @@ class Entity
   end
 
   def damage(d)
-    @radius -= d
+    @radius = [0, @radius - d].max
+  end
+
+  def heal(d)
+    @radius = [@max_radius, @radius + d].min
   end
 
   def warp(x, y)
