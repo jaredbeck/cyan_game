@@ -54,6 +54,11 @@ class World
       else
         # noop
     end
+
+    # Remove entities with diameter 0
+    @entities.delete_if { |e|
+      e.diameter <= 0
+    }
   end
 
   def update
