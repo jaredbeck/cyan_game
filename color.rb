@@ -14,6 +14,10 @@ class Color
     [@r, @g, @b].pack('C*').force_encoding('utf-8')
   end
 
+  def rad
+    CyanGame::ColorWheel.rad(@r, @g, @b)
+  end
+
   # Combine four 8-bit unsigned ints into one 32-bit unsigned int.
   # (http://bit.ly/1zWV0N5)  The most significant byte is actually
   # alpha, which is not what you'd expect from the acronym RGBA.
