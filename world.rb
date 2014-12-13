@@ -31,10 +31,6 @@ class World
     end
   end
 
-  def debug_str
-    '(%d, %d, %d)' % [@player.x, @player.y, @player.radius]
-  end
-
   def draw
     @player.draw
     @entities.each(&:draw)
