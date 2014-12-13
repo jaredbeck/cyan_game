@@ -19,7 +19,7 @@ module CyanGame
     end
 
     def change_color
-      new_hue = @color.rad + 2 * Math::PI / 3
+      new_hue = @color.hue + 2 * Math::PI / 3
       if new_hue > TWO_PI
         new_hue -= TWO_PI
       end

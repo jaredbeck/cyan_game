@@ -5,8 +5,8 @@ module CyanGame
 
     IMAGE_DIAMETER = 250
 
-    attr_accessor :color
-    attr_reader :coordinates, :diameter, :x, :y
+    attr_accessor :color, :diameter
+    attr_reader :coordinates, :x, :y
 
     def initialize(window, attr = {})
       @window = window
@@ -18,10 +18,6 @@ module CyanGame
         @coordinate_fns = attr['coordinates']
         @diameter = attr['diameter']
       end
-    end
-
-    def damage(d)
-      @diameter = [0, @diameter - d].max
     end
 
     def draw
@@ -38,10 +34,6 @@ module CyanGame
     # Given angle `ø` returns polar radius as a decimal percent of window
     def eval_radius(fn_str, ø)
       eval(fn_str) # TODO: Don't eval, it's insecure
-    end
-
-    def heal(d)
-      @diameter = @diameter + d
     end
 
     def image

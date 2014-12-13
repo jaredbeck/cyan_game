@@ -48,17 +48,10 @@ module CyanGame
       @player.radius <= 0
     end
 
-    def hit(e1, e2)
-      case ColorWheel.rel(e1.color, e2.color)
-        when :complementary
-          e1.damage(1)
-          e2.damage(1)
-        when :adjacent
-          e1.heal(1)
-          e2.damage(1)
-        else
-          # noop
-      end
+    def hit(player, entity)
+      delta = ColorWheel.rel(player.color, entity.color)
+      player.diameter += delta
+      entity.diameter -= 1
 
       # Remove entities with diameter 0
       @entities.delete_if { |e|

@@ -5,6 +5,7 @@ module CyanGame
 
     # A sixth of a circle is π / 3 radians
     PI_OVER_3 = Math::PI / 3.0
+    PI_OVER_2 = Math::PI / 2.0
 
     # Complementary colors are 2π / 3 radians apart
     COMPLEMENT = 2 * PI_OVER_3
@@ -25,16 +26,9 @@ module CyanGame
       end
 
       # Given two colors, returns the approximate relationship
-      # between them, e.g. red and green are `:complementary`.
+      # between them.
       def rel(c1, c2)
-        dist = min_dist(c1, c2)
-        if dist >= 1.99 * PI_OVER_3
-          :complementary # approximately speaking
-        elsif dist < PI_OVER_3
-          :adjacent # similar concept to "analogous colors"
-        else
-          :other
-        end
+        min_dist(c1, c2) <= PI_OVER_2 ? +1 : -1
       end
 
       private
