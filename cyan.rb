@@ -21,8 +21,13 @@ module CyanGame
       self.caption = 'Cyan'
       @quotations = Quotations.new
       @font = Gosu::Font.new(self, Gosu::default_font_name, 20)
-      world_file.nil? ? random_world : load_world(world_file)
+      @world_file = world_file
+      create_world(@world_file)
       ready
+    end
+
+    def create_world(world_file)
+      world_file.nil? ? random_world : load_world(world_file)
     end
 
     def update
@@ -89,7 +94,7 @@ module CyanGame
             when STATE_WORLD_READY
               play
             when STATE_GAME_OVER, STATE_VICTORY
-              random_world
+              create_world(@world_file)
               ready
             else
               # noop
