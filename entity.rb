@@ -63,7 +63,7 @@ class Entity
   # radius - decimal 0 .. 1
   def polar_to_cartesian(angle, radius, window)
     if radius < -1 || radius > 1
-      raise Cyan::Errors::PolarRadiusOutOfBounds, "Expect 0 .. 1, got #{radius}"
+      raise CyanGame::Errors::PolarRadiusOutOfBounds, "Expect 0 .. 1, got #{radius}"
     end
     d = radius * window.smallest_dimension
     w = window.width

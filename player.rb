@@ -1,7 +1,10 @@
 require_relative 'circle'
 require_relative 'entity'
 
+# TODO: Move to CyanGame::Player
 class Player < Entity
+
+  TWO_PI = 2 * Math::PI
 
   def initialize(*args)
     super
@@ -16,14 +19,12 @@ class Player < Entity
   end
 
   def change_color
-    case @color
-      when CyanGame::Color::CYAN
-        @color = CyanGame::Color::YELLOW
-      when CyanGame::Color::YELLOW
-        @color = CyanGame::Color::MAGENTA
-      else
-        @color = CyanGame::Color::CYAN
+    new_hue = @color.rad + 2 * Math::PI / 3
+    if new_hue > TWO_PI
+      new_hue -= TWO_PI
     end
+    r, g, b = CyanGame::ColorWheel.hue_to_rgb(new_hue)
+    @color = CyanGame::Color.new(r, g, b)
     rebuild_image
   end
 

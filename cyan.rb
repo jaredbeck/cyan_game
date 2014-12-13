@@ -4,7 +4,7 @@ require_relative 'lib/cyan_game/quotations'
 require_relative 'errors'
 require_relative 'world'
 
-module Cyan
+module CyanGame
   class Window < Gosu::Window
 
     STATE_GAME_OVER = 1
@@ -32,7 +32,7 @@ module Cyan
         when STATE_GAME_OVER, STATE_WORLD_READY
           # noop
         else
-          raise Cyan::Errors::InvalidGameState
+          raise CyanGame::Errors::InvalidGameState
       end
     end
 
@@ -47,7 +47,7 @@ module Cyan
           draw_centered_text('GAME OVER', 0, -20)
           draw_centered_text('We\'ll meet again someday soon.', 0, +20)
         else
-          raise Cyan::Errors::InvalidGameState
+          raise CyanGame::Errors::InvalidGameState
       end
     end
 
@@ -72,7 +72,7 @@ module Cyan
             when STATE_PLAY
               ready
             else
-              raise Cyan::Errors::InvalidGameState
+              raise CyanGame::Errors::InvalidGameState
           end
         when Gosu::KbSpace
           @world.change_player_color
@@ -116,4 +116,4 @@ module Cyan
   end
 end
 
-Cyan::Window.new.show
+CyanGame::Window.new.show

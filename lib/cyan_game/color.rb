@@ -22,6 +22,7 @@ module CyanGame
       [@r, @g, @b].pack('C*').force_encoding('utf-8')
     end
 
+    # TODO: Rename to `hue`
     def rad
       ColorWheel.rad(@r, @g, @b)
     end

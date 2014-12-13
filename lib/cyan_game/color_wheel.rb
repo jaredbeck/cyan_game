@@ -19,6 +19,13 @@ module CyanGame
         ::Color::RGB.new(r, g, b).to_hsl.hue * Math::PI / 180
       end
 
+      # Given `hue` in radians
+      def hue_to_rgb(hue)
+        hue_degrees = hue * 180 / Math::PI
+        rgb = ::Color::HSL.new(hue_degrees, 100, 50).to_rgb
+        [rgb.r, rgb.g, rgb.b].map { |e| e * 255 }
+      end
+
       # Given two colors, returns the approximate relationship
       # between them, e.g. red and green are `:complementary`.
       def rel(c1, c2)
