@@ -4,7 +4,7 @@ require_relative '../../lib/cyan_game/color'
 describe CyanGame::ColorWheel do
 
   def color(r, g, b)
-    CyanGame::Color.new(r, g, b)
+    Color.new(r, g, b)
   end
 
   describe '.rad' do

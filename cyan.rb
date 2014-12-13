@@ -1,8 +1,8 @@
 require 'gosu'
 require 'pry'
 require_relative 'lib/cyan_game/quotations'
-require_relative 'errors'
-require_relative 'world'
+require_relative 'lib/cyan_game/errors'
+require_relative 'lib/cyan_game/world'
 
 module CyanGame
   class Window < Gosu::Window
@@ -18,7 +18,7 @@ module CyanGame
       w = Gosu.available_width
       super(w, h, false)
       self.caption = 'Cyan'
-      @quotations = CyanGame::Quotations.new
+      @quotations = Quotations.new
       @font = Gosu::Font.new(self, Gosu::default_font_name, 20)
       random_world
       ready
@@ -32,7 +32,7 @@ module CyanGame
         when STATE_GAME_OVER, STATE_WORLD_READY
           # noop
         else
-          raise CyanGame::Errors::InvalidGameState
+          raise Errors::InvalidGameState
       end
     end
 
@@ -42,12 +42,12 @@ module CyanGame
           draw_quotation(@quotation)
         when STATE_PLAY
           @world.draw
-          @font.draw(@world.debug_str, 10, 10, 1, 1.0, 1.0, CyanGame::Color::WHITE.to_i)
+          @font.draw(@world.debug_str, 10, 10, 1, 1.0, 1.0, Color::WHITE.to_i)
         when STATE_GAME_OVER
           draw_centered_text('GAME OVER', 0, -20)
           draw_centered_text('We\'ll meet again someday soon.', 0, +20)
         else
-          raise CyanGame::Errors::InvalidGameState
+          raise Errors::InvalidGameState
       end
     end
 
@@ -60,7 +60,7 @@ module CyanGame
     def draw_centered_text(str, off_x, off_y)
       x = width / 2
       y = height / 2
-      font.draw_rel(str, x + off_x, y + off_y, 1, 0.5, 0.5, 1.0, 1.0, CyanGame::Color::WHITE.to_i)
+      font.draw_rel(str, x + off_x, y + off_y, 1, 0.5, 0.5, 1.0, 1.0, Color::WHITE.to_i)
     end
 
     def button_down(id)
@@ -72,7 +72,7 @@ module CyanGame
             when STATE_PLAY
               ready
             else
-              raise CyanGame::Errors::InvalidGameState
+              raise Errors::InvalidGameState
           end
         when Gosu::KbSpace
           @world.change_player_color
