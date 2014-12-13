@@ -12,10 +12,8 @@ module CyanGame
     class << self
 
       # Given RGB values, return position on color wheel, in
-      # radians, where yellow is 0, e.g. red is π / 3.
-      # Probably a terrible implementation.  Other interesting ideas here:
-      # http://stackoverflow.com/questions/8507885/shift-hue-of-an-rgb-color
-      def rad(r, g, b)
+      # radians, where red is 0.
+      def rgb_to_hue(r, g, b)
         ::Color::RGB.new(r, g, b).to_hsl.hue * Math::PI / 180
       end
 
@@ -42,8 +40,8 @@ module CyanGame
       private
 
       def min_dist(c1, c2)
-        r1 = c1.rad
-        r2 = c2.rad
+        r1 = c1.hue
+        r2 = c2.hue
         counter_clockwise = (r1 - r2).abs
         min = [r1, r2].min
         max = [r1, r2].max

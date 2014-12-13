@@ -4,26 +4,26 @@ require_relative '../../lib/cyan_game/color'
 describe CyanGame::ColorWheel do
 
   def color(r, g, b)
-    Color.new(r, g, b)
+    CyanGame::Color.new(r, g, b)
   end
 
-  describe '.rad' do
+  describe '.rgb_to_hue' do
     it 'returns position on wheel, in radians' do
       w = described_class
 
       # primary
       # -------
 
-      expect(w.rad(255, 000, 000)).to be_within(0.01).of(0) # red
-      expect(w.rad(000, 255, 000)).to be_within(0.01).of(2 * Math::PI / 3) # green
-      expect(w.rad(000, 000, 255)).to be_within(0.01).of(4 * Math::PI / 3) # blue
+      expect(w.rgb_to_hue(255, 000, 000)).to be_within(0.01).of(0) # red
+      expect(w.rgb_to_hue(000, 255, 000)).to be_within(0.01).of(2 * Math::PI / 3) # green
+      expect(w.rgb_to_hue(000, 000, 255)).to be_within(0.01).of(4 * Math::PI / 3) # blue
 
       # secondary
       # ---------
 
-      expect(w.rad(255, 255, 000)).to be_within(0.01).of(Math::PI / 3) # yellow
-      expect(w.rad(000, 255, 255)).to be_within(0.01).of(3 * Math::PI / 3) # cyan
-      expect(w.rad(255, 000, 255)).to be_within(0.01).of(5 * Math::PI / 3) # magenta
+      expect(w.rgb_to_hue(255, 255, 000)).to be_within(0.01).of(Math::PI / 3) # yellow
+      expect(w.rgb_to_hue(000, 255, 255)).to be_within(0.01).of(3 * Math::PI / 3) # cyan
+      expect(w.rgb_to_hue(255, 000, 255)).to be_within(0.01).of(5 * Math::PI / 3) # magenta
     end
   end
 

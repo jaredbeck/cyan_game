@@ -22,9 +22,8 @@ module CyanGame
       [@r, @g, @b].pack('C*').force_encoding('utf-8')
     end
 
-    # TODO: Rename to `hue`
-    def rad
-      ColorWheel.rad(@r, @g, @b)
+    def hue
+      ColorWheel.rgb_to_hue(@r, @g, @b)
     end
 
     # Combine four 8-bit unsigned ints into one 32-bit unsigned int.
