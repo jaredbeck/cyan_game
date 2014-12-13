@@ -1,7 +1,11 @@
 require_relative '../../lib/cyan_game/color_wheel'
-require_relative '../../color'
+require_relative '../../lib/cyan_game/color'
 
 describe CyanGame::ColorWheel do
+
+  def color(r, g, b)
+    CyanGame::Color.new(r, g, b)
+  end
 
   describe '.rad' do
     it 'returns position on wheel, in radians' do
@@ -52,18 +56,18 @@ describe CyanGame::ColorWheel do
     it 'returns approximate relationship between two colors' do
       w = described_class
 
-      red =         Color.new(255, 000, 000)
-      blue =        Color.new(000, 000, 255)
-      green =       Color.new(000, 255, 000)
-      yellow =      Color.new(255, 255, 000)
-      magenta =     Color.new(255, 000, 255)
-      cyan =        Color.new(000, 255, 255)
-      chartreuse =  Color.new(127, 255, 000)
-      orange =      Color.new(255, 127, 000)
-      rose =        Color.new(255, 000, 127)
-      violet =      Color.new(127, 000, 255)
-      azure =       Color.new(000, 127, 255)
-      spring =      Color.new(000, 255, 127)
+      red =         color(255, 000, 000)
+      blue =        color(000, 000, 255)
+      green =       color(000, 255, 000)
+      yellow =      color(255, 255, 000)
+      magenta =     color(255, 000, 255)
+      cyan =        color(000, 255, 255)
+      chartreuse =  color(127, 255, 000)
+      orange =      color(255, 127, 000)
+      rose =        color(255, 000, 127)
+      violet =      color(127, 000, 255)
+      azure =       color(000, 127, 255)
+      spring =      color(000, 255, 127)
 
       # complementary
       expect(w.rel(red, blue)).to eq(:complementary)

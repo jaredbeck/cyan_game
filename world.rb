@@ -1,5 +1,6 @@
 require 'json'
-require_relative 'color'
+require_relative 'lib/cyan_game/color'
+require_relative 'lib/cyan_game/color_wheel'
 require_relative 'entity'
 require_relative 'player'
 
@@ -12,7 +13,7 @@ class World
     w = window.width
     h = window.height
 
-    @player = Player.new(window, Color::CYAN)
+    @player = Player.new(window, CyanGame::Color::CYAN)
     @player.warp(w / 2, h / 2)
 
     parsed = JSON.parse(file.read)
@@ -22,7 +23,7 @@ class World
 
     @entities = parsed['entities'].map do |e|
       rgb = e['color'].values_at(*%w[r g b])
-      Entity.new(window, Color.new(*rgb), e['coordinates'])
+      Entity.new(window, CyanGame::Color.new(*rgb), e['coordinates'])
     end
 
     @entities.each do |e|
@@ -43,6 +44,11 @@ class World
     @player.radius <= 0
   end
 
+  def hit(e1, e2)
+    e1.damage(1)
+    e2.damage(1)
+  end
+
   def polar_to_cartesian(coordinates, window)
     d = coordinates['distance'] * window.smallest_dimension
     r = coordinates['radians']
@@ -59,8 +65,7 @@ class World
     @entities.each do |e|
       d = Gosu.distance(@player.x, @player.y, e.x, e.y)
       if d < @player.radius + e.radius
-        @player.damage(1)
-        e.damage(1)
+        hit(@player, e)
       end
     end
 

@@ -41,7 +41,7 @@ module Cyan
           draw_centered_text(@world.subtitle, 0, +20)
         when STATE_PLAY
           @world.draw
-          @font.draw(@world.debug_str, 10, 10, 1, 1.0, 1.0, Color::WHITE.to_i)
+          @font.draw(@world.debug_str, 10, 10, 1, 1.0, 1.0, CyanGame::Color::WHITE.to_i)
         when STATE_GAME_OVER
           draw_centered_text('GAME OVER', 0, -20)
           draw_centered_text('We\'ll meet again someday soon.', 0, +20)
@@ -53,7 +53,7 @@ module Cyan
     def draw_centered_text(str, off_x, off_y)
       x = width / 2
       y = height / 2
-      font.draw_rel(str, x + off_x, y + off_y, 1, 0.5, 0.5, 1.0, 1.0, Color::WHITE.to_i)
+      font.draw_rel(str, x + off_x, y + off_y, 1, 0.5, 0.5, 1.0, 1.0, CyanGame::Color::WHITE.to_i)
     end
 
     def button_down(id)
