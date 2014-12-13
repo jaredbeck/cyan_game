@@ -14,14 +14,14 @@ module CyanGame
 
     attr_reader :font
 
-    def initialize
+    def initialize(world_file = nil)
       h = Gosu.available_height
       w = Gosu.available_width
       super(w, h, false)
       self.caption = 'Cyan'
       @quotations = Quotations.new
       @font = Gosu::Font.new(self, Gosu::default_font_name, 20)
-      random_world
+      world_file.nil? ? random_world : load_world(world_file)
       ready
     end
 
@@ -97,6 +97,10 @@ module CyanGame
       end
     end
 
+    def load_world(world_file)
+      @world = World.new(self, File.new(world_file))
+    end
+
     def play
       @state = STATE_PLAY
     end
@@ -124,4 +128,4 @@ module CyanGame
   end
 end
 
-CyanGame::Window.new.show
+CyanGame::Window.new(*ARGV).show

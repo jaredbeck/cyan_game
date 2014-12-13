@@ -1,0 +1,14 @@
+{
+  "title": "Crazy Star",
+  "entities": [
+    {
+      "comment": "yellow",
+      "color": { "r": 255, "g": 255, "b": 0 },
+      "coordinates": {
+        "radius": "(Math.sin(1.2 * ø) ** 2 + Math.cos(6 * ø) ** 3) / 2",
+        "angle": "t * π / 16"
+      },
+      "diameter": 160
+    }
+  ]
+}
