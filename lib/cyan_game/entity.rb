@@ -3,6 +3,8 @@ require_relative 'circle'
 module CyanGame
   class Entity
 
+    IMAGE_DIAMETER = 250
+
     attr_accessor :color
     attr_reader :coordinates, :diameter, :x, :y
 
@@ -13,8 +15,8 @@ module CyanGame
       unless attr.empty?
         rgb = attr['color'].values_at(*%w[r g b])
         @color = Color.new(*rgb)
-        @coordinate_fns = attr['coordinates'] # { "radius": "cos(ø)", "angle": "t * π / 8" }
-        @diameter = @max_diameter = attr['diameter']
+        @coordinate_fns = attr['coordinates']
+        @diameter = attr['diameter']
       end
     end
 
@@ -23,7 +25,7 @@ module CyanGame
     end
 
     def draw
-      scale_factor = diameter.to_f / @max_diameter
+      scale_factor = diameter.to_f / IMAGE_DIAMETER
       image.draw(@x - radius, @y - radius, @z, scale_factor, scale_factor)
     end
 
@@ -39,16 +41,16 @@ module CyanGame
     end
 
     def heal(d)
-      @diameter = [@max_diameter, @diameter + d].min
+      @diameter = @diameter + d
     end
 
     def image
-      @_image ||= Gosu::Image.new(@window, Circle.new(@max_diameter / 2, color), false)
+      @_image ||= Gosu::Image.new(@window, Circle.new(IMAGE_DIAMETER / 2, color), false)
     end
 
     def rebuild_image
       # TODO: duplicated code with `image`
-      @_image = Gosu::Image.new(@window, Circle.new(@max_diameter / 2, color), false)
+      @_image = Gosu::Image.new(@window, Circle.new(IMAGE_DIAMETER / 2, color), false)
     end
 
     # Given the `window` and a timestamp `t`, move the entity

@@ -10,7 +10,7 @@ module CyanGame
       super
       @color = Color::CYAN
       @z = 1 # highest, on top of everything else
-      @diameter = @max_diameter = 50
+      @diameter = 50
     end
 
     def accelerate(dx, dy)
