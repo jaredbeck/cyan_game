@@ -2,6 +2,7 @@ class Circle
   attr_reader :columns, :rows
 
   def initialize(radius, color)
+    raise ArgumentError if radius.nil?
     packed_binary_rgb = color.pack
     @columns = @rows = radius * 2
     lower_half = (0...radius).map do |y|

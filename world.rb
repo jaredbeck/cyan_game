@@ -9,6 +9,8 @@ class World
   attr_reader :subtitle, :title, :window
 
   def initialize(window, file)
+    @t = 0 # world time
+
     @window = window
     w = window.width
     h = window.height
@@ -25,9 +27,7 @@ class World
       Entity.new(window, e)
     end
 
-    @entities.each do |e|
-      e.warp(*polar_to_cartesian(e.coordinates, window))
-    end
+    @entities.each do |e| e.move(window, @t) end
   end
 
   def draw
@@ -52,22 +52,17 @@ class World
     end
   end
 
-  def polar_to_cartesian(coordinates, window)
-    d = coordinates['distance'] * window.smallest_dimension
-    r = coordinates['radians']
-    w = window.width
-    h = window.height
-    dx = Math.cos(r) * d
-    dy = Math.sin(r) * d
-    x = (w / 2) + dx
-    y = (h / 2) + dy
-    [x, y]
-  end
-
   def update
+    @t += 0.05
+
+    @entities.each do |e|
+      e.move(window, @t)
+    end
+
+    # hit detection between player and entities
     @entities.each do |e|
       d = Gosu.distance(@player.x, @player.y, e.x, e.y)
-      if d <= @player.radius + e.radius
+      if d <= (@player.diameter + e.diameter) / 2
         hit(@player, e)
       end
     end
