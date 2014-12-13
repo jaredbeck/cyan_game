@@ -14,8 +14,8 @@ module CyanGame
     end
 
     def accelerate(dx, dy)
-      @vel_x += 0.5 * dx
-      @vel_y += 0.5 * dy
+      @vel_x += 5 * dx
+      @vel_y += 5 * dy
     end
 
     def change_color
@@ -40,8 +40,8 @@ module CyanGame
       @y = window.height - radius if @y > window.height - radius
 
       # decell
-      @vel_x *= 0.95
-      @vel_y *= 0.95
+      @vel_x *= 0.50
+      @vel_y *= 0.50
     end
 
   end
