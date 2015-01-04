@@ -1,9 +1,11 @@
 require_relative 'circle'
+require_relative 'color_wheel'
 require_relative 'entity'
 
 module CyanGame
   class Player < Entity
 
+    COLOR_ABSORPTION_RATE = Math::PI / 100 # radians
     TWO_PI = 2 * Math::PI
 
     def initialize(*args)
@@ -11,6 +13,15 @@ module CyanGame
       @color = Color::CYAN
       @z = 1 # highest, on top of everything else
       @diameter = 50
+    end
+
+    def absorb_color_of(entity)
+      new_hue = ColorWheel.shift_hue(
+        from: color.hue,
+        to: entity.color.hue,
+        shift: COLOR_ABSORPTION_RATE)
+      new_rgb = ColorWheel.hue_to_rgb(new_hue)
+      @color = Color.new(*new_rgb)
     end
 
     def accelerate(dx, dy)

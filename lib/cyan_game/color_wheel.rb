@@ -6,7 +6,7 @@ module CyanGame
     # If healing is greater than damage, the game is easier.
     # Does that make it more fun?
     DAMAGE  = -1
-    HEALING = +1.5
+    HEALING = +1.1
 
     # A sixth of a circle is π / 3 radians
     PI_OVER_3 = Math::PI / 3.0
@@ -16,6 +16,19 @@ module CyanGame
     COMPLEMENT = 2 * PI_OVER_3
 
     class << self
+
+      # `shift_hue` takes two hues, `from` and `to` in radians,
+      # and a maximum distance to shift, `shift`, and returns
+      # the new, shifted hue.
+      def shift_hue(from:, to:, shift:)
+        if from < to
+          [from + shift, to].min
+        elsif from > to
+          [from - shift, to].max
+        else
+          to
+        end
+      end
 
       # Given RGB values, return position on color wheel, in
       # radians, where red is 0.

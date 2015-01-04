@@ -48,6 +48,7 @@ module CyanGame
       delta = ColorWheel.rel(player.color, entity.color)
       player.diameter += delta
       entity.diameter -= 1
+      player.absorb_color_of(entity)
 
       # Remove entities with diameter 0
       @entities.delete_if { |e|

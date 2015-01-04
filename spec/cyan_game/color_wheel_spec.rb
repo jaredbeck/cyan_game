@@ -77,4 +77,14 @@ describe CyanGame::ColorWheel do
     end
   end
 
+  describe '.shift_hue' do
+    it 'returns new hue' do
+      w = described_class
+      sixth = described_class::PI_OVER_3
+      third = sixth * 2
+      expect(w.shift_hue(from: 0, to: third, shift: third)).to eq(third)
+      expect(w.shift_hue(from: 0, to: third, shift: sixth)).to eq(sixth)
+    end
+  end
+
 end
