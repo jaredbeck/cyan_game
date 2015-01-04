@@ -11,8 +11,8 @@ module CyanGame
       @x = @y = @vel_x = @vel_y = 0.0
       @z = 0.9
       unless attr.empty?
-        rgb = attr['color'].values_at(*%w[r g b])
-        @color = Color.new(*rgb)
+        hsl = attr['color'].values_at(*%w[h s l])
+        @color = Color.new(*hsl)
         @coordinate_fns = attr['coordinates']
         @diameter = attr['diameter']
       end

@@ -4,7 +4,7 @@ require_relative 'entity'
 module CyanGame
   class Player < Entity
 
-    COLOR_ABSORPTION_RATE = Math::PI / 100 # radians
+    COLOR_ABSORPTION_RATE = 2.0 # degrees
     TWO_PI = 2 * Math::PI
 
     def initialize(*args)
@@ -19,8 +19,7 @@ module CyanGame
         from: color.hue,
         to: entity.color.hue,
         shift: COLOR_ABSORPTION_RATE)
-      new_rgb = ColorWheel.hue_to_rgb(new_hue)
-      @color = Color.new(*new_rgb)
+      @color = Color.new(new_hue, 100, 50)
     end
 
     def accelerate(dx, dy)

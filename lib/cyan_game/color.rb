@@ -3,24 +3,33 @@ require 'color'
 module CyanGame
   class Color
 
-    attr_reader :rgb
+    PERCENTAGE_RANGE = (0.0 .. 100.0)
+    DEGREE_RANGE = (0.0 .. 360.0)
 
-    def initialize(r, g, b)
-      assert_unsigned_8_bit(r, g, b)
-      @rgb = ::Color::RGB.new(r, g, b)
+    attr_reader :hsl
+
+    # Creates an HSL color object.  Hue is given in degrees 0..360.
+    # Saturation and lightness are percentages 0..100.  The public
+    # interface is HSL, but a private RGB instance is also kept
+    # to optimize `to_i`.
+    def initialize(h, s, l)
+      assert_degrees(h)
+      assert_percentages(s, l)
+      @hsl = ::Color::HSL.new(h, s, l)
+      @rgb = @hsl.to_rgb
     end
 
     def ==(other)
-      @rgb == other.rgb
+      @hsl == other.hsl
     end
     alias_method :eql?, :==
 
-    # Return position on color wheel, in radians, where red is 0.
+    # Return position on color wheel, in degrees, where red is 0.
     def hue
-      @rgb.to_hsl.hue * Math::PI / 180
+      @hsl.hue
     end
 
-    # Returns a 32-bit unsigned integer.  The first (most significant)
+    # Returns a 32-bit unsigned RGBA integer.  The first (most significant)
     # byte is alpha, then red, green, and blue. Two bitwise operators
     # are used: left shift and bitwise or. (http://bit.ly/1zWV0N5)
     def to_i
@@ -30,20 +39,27 @@ module CyanGame
 
     private
 
-    def assert_unsigned_8_bit(*args)
-      raise TypeError if args.any? { |a| a < 0 || a > 255 }
+    def assert_percentages(*args)
+      args.each do |a|
+        unless PERCENTAGE_RANGE.cover?(a)
+          raise TypeError, "Expected percentage, got #{a}"
+        end
+      end
+    end
+
+    def assert_degrees(θ)
+      raise TypeError unless DEGREE_RANGE.cover?(θ)
     end
 
     # Returns array of red, green, blue in the range 0..255.
-    # T
     def rgb_bytes
       [@rgb.red, @rgb.green, @rgb.blue]
     end
 
-    CYAN = new(0, 255, 255)
-    WHITE = new(255, 255, 255)
-    YELLOW = new(255, 255, 0)
-    MAGENTA = new(255, 0, 255)
+    CYAN =    new(180, 100, 50)
+    WHITE =   new(0,   0,   100)
+    YELLOW =  new(60,  100, 50)
+    MAGENTA = new(300, 100, 50)
 
   end
 end

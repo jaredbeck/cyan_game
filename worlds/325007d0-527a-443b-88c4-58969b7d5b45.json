@@ -3,7 +3,7 @@
   "entities": [
     {
       "comment": "yellow",
-      "color": { "r": 255, "g": 255, "b": 0 },
+      "color": { "h": 60, "s": 100, "l": 50 },
       "coordinates": {
         "radius": "(Math.sin(1.2 * ø) ** 2 + Math.cos(6 * ø) ** 3) / 2",
         "angle": "t * π / 32 + π / 64"
@@ -12,7 +12,7 @@
     },
     {
       "comment": "yellow",
-      "color": { "r": 255, "g": 255, "b": 0 },
+      "color": { "h": 60, "s": 100, "l": 50 },
       "coordinates": {
         "radius": "(Math.sin(1.2 * ø) ** 2 + Math.cos(6 * ø) ** 3) / 2",
         "angle": "t * π / 32 + 2 * π / 64"
@@ -21,7 +21,7 @@
     },
     {
       "comment": "yellow",
-      "color": { "r": 255, "g": 255, "b": 0 },
+      "color": { "h": 60, "s": 100, "l": 50 },
       "coordinates": {
         "radius": "(Math.sin(1.2 * ø) ** 2 + Math.cos(6 * ø) ** 3) / 2",
         "angle": "t * π / 32 + 3 * π / 64"
@@ -30,7 +30,7 @@
     },
     {
       "comment": "yellow",
-      "color": { "r": 255, "g": 255, "b": 0 },
+      "color": { "h": 60, "s": 100, "l": 50 },
       "coordinates": {
         "radius": "(Math.sin(1.2 * ø) ** 2 + Math.cos(6 * ø) ** 3) / 2",
         "angle": "t * π / 32 + 4 * π / 64"
@@ -39,7 +39,7 @@
     },
     {
       "comment": "magenta",
-      "color": { "r": 255, "g": 0, "b": 255 },
+      "color": { "h": 300, "s": 100, "l": 50 },
       "coordinates": {
         "radius": "(Math.sin(1.2 * ø) ** 2 + Math.cos(6 * ø) ** 3) / 2",
         "angle": "t * π / 32 + 5 * π / 64"
@@ -48,7 +48,7 @@
     },
     {
       "comment": "magenta",
-      "color": { "r": 255, "g": 0, "b": 255 },
+      "color": { "h": 300, "s": 100, "l": 50 },
       "coordinates": {
         "radius": "(Math.sin(1.2 * ø) ** 2 + Math.cos(6 * ø) ** 3) / 2",
         "angle": "t * π / 32 + 6 * π / 64"
@@ -57,7 +57,7 @@
     },
     {
       "comment": "magenta",
-      "color": { "r": 255, "g": 0, "b": 255 },
+      "color": { "h": 300, "s": 100, "l": 50 },
       "coordinates": {
         "radius": "(Math.sin(1.2 * ø) ** 2 + Math.cos(6 * ø) ** 3) / 2",
         "angle": "t * π / 32 + 7 * π / 64"
@@ -66,7 +66,7 @@
     },
     {
       "comment": "magenta",
-      "color": { "r": 255, "g": 0, "b": 255 },
+      "color": { "h": 300, "s": 100, "l": 50 },
       "coordinates": {
         "radius": "(Math.sin(1.2 * ø) ** 2 + Math.cos(6 * ø) ** 3) / 2",
         "angle": "t * π / 32 + 8 * π / 64"
@@ -75,7 +75,7 @@
     },
     {
       "comment": "cyan",
-      "color": { "r": 0, "g": 255, "b": 255 },
+      "color": { "h": 180, "s": 100, "l": 50 },
       "coordinates": {
         "radius": "(Math.sin(1.2 * ø) ** 2 + Math.cos(6 * ø) ** 3) / 2",
         "angle": "t * π / 32 + 9 * π / 64"
@@ -84,7 +84,7 @@
     },
     {
       "comment": "cyan",
-      "color": { "r": 0, "g": 255, "b": 255 },
+      "color": { "h": 180, "s": 100, "l": 50 },
       "coordinates": {
         "radius": "(Math.sin(1.2 * ø) ** 2 + Math.cos(6 * ø) ** 3) / 2",
         "angle": "t * π / 32 + 10 * π / 64"
@@ -93,7 +93,7 @@
     },
     {
       "comment": "cyan",
-      "color": { "r": 0, "g": 255, "b": 255 },
+      "color": { "h": 180, "s": 100, "l": 50 },
       "coordinates": {
         "radius": "(Math.sin(1.2 * ø) ** 2 + Math.cos(6 * ø) ** 3) / 2",
         "angle": "t * π / 32 + 11 * π / 64"
@@ -102,7 +102,7 @@
     },
     {
       "comment": "cyan",
-      "color": { "r": 0, "g": 255, "b": 255 },
+      "color": { "h": 180, "s": 100, "l": 50 },
       "coordinates": {
         "radius": "(Math.sin(1.2 * ø) ** 2 + Math.cos(6 * ø) ** 3) / 2",
         "angle": "t * π / 32 + 12 * π / 64"
