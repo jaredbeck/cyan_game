@@ -3,6 +3,11 @@ require 'color'
 module CyanGame
   module ColorWheel
 
+    # If healing is greater than damage, the game is easier.
+    # Does that make it more fun?
+    DAMAGE  = -1
+    HEALING = +1.5
+
     # A sixth of a circle is π / 3 radians
     PI_OVER_3 = Math::PI / 3.0
     PI_OVER_2 = Math::PI / 2.0
@@ -26,10 +31,9 @@ module CyanGame
       end
 
       # Given two colors, returns the approximate relationship
-      # between them.  Note that healing is twice as potent (+2)
-      # as damage (+1), because we think that might be more fun.
+      # between them.
       def rel(c1, c2)
-        min_dist(c1, c2) <= PI_OVER_2 ? +2 : -1
+        min_dist(c1, c2) <= PI_OVER_2 ? HEALING : DAMAGE
       end
 
       private
