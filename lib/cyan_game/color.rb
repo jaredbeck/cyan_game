@@ -30,7 +30,7 @@ module CyanGame
     # (http://bit.ly/1zWV0N5)  The most significant byte is actually
     # alpha, which is not what you'd expect from the acronym RGBA.
     def to_i
-      255 << 24 | @r << 16 | @g << 8 | @b
+      255 << 24 | @r.to_i << 16 | @g.to_i << 8 | @b.to_i
     end
 
     private

@@ -25,11 +25,10 @@ module CyanGame
       end
       r, g, b = ColorWheel.hue_to_rgb(new_hue)
       @color = Color.new(r, g, b)
-      rebuild_image
     end
 
     def move(window)
-      # accell
+      # accelerate
       @x += @vel_x
       @y += @vel_y
 
@@ -39,7 +38,7 @@ module CyanGame
       @y = radius if @y < radius
       @y = window.height - radius if @y > window.height - radius
 
-      # decell
+      # decelerate
       @vel_x *= 0.50
       @vel_y *= 0.50
     end

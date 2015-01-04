@@ -20,9 +20,13 @@ module CyanGame
       end
     end
 
+    # `draw` the image at the current position.  Happily, gosu
+    # handles scaling and hue-shifting for us.  Hue-shifting
+    # every entity on every draw may not perform well for lots
+    # of entities, but seems fine so far with a dozen.
     def draw
       scale_factor = diameter.to_f / IMAGE_DIAMETER
-      image.draw(@x - radius, @y - radius, @z, scale_factor, scale_factor)
+      image.draw(@x - radius, @y - radius, @z, scale_factor, scale_factor, color.to_i)
     end
 
     # Given time `t` returns angle in radians
@@ -37,12 +41,7 @@ module CyanGame
     end
 
     def image
-      @_image ||= Gosu::Image.new(@window, Circle.new(IMAGE_DIAMETER / 2, color), false)
-    end
-
-    def rebuild_image
-      # TODO: duplicated code with `image`
-      @_image = Gosu::Image.new(@window, Circle.new(IMAGE_DIAMETER / 2, color), false)
+      @_image ||= generate_image
     end
 
     # Given the `window` and a timestamp `t`, move the entity
@@ -76,6 +75,16 @@ module CyanGame
 
     def warp(x, y)
       @x, @y = x, y
+    end
+
+    private
+
+    def circle
+      Circle.new(IMAGE_DIAMETER / 2, Color::WHITE)
+    end
+
+    def generate_image
+      Gosu::Image.new(@window, circle, false)
     end
 
   end
