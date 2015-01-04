@@ -1,4 +1,3 @@
-require_relative 'circle'
 require_relative 'color_wheel'
 require_relative 'entity'
 
