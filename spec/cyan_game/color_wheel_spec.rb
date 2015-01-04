@@ -7,26 +7,6 @@ describe CyanGame::ColorWheel do
     CyanGame::Color.new(r, g, b)
   end
 
-  describe '.rgb_to_hue' do
-    it 'returns position on wheel, in radians' do
-      w = described_class
-
-      # primary
-      # -------
-
-      expect(w.rgb_to_hue(255, 000, 000)).to be_within(0.01).of(0) # red
-      expect(w.rgb_to_hue(000, 255, 000)).to be_within(0.01).of(2 * Math::PI / 3) # green
-      expect(w.rgb_to_hue(000, 000, 255)).to be_within(0.01).of(4 * Math::PI / 3) # blue
-
-      # secondary
-      # ---------
-
-      expect(w.rgb_to_hue(255, 255, 000)).to be_within(0.01).of(Math::PI / 3) # yellow
-      expect(w.rgb_to_hue(000, 255, 255)).to be_within(0.01).of(3 * Math::PI / 3) # cyan
-      expect(w.rgb_to_hue(255, 000, 255)).to be_within(0.01).of(5 * Math::PI / 3) # magenta
-    end
-  end
-
   describe '.rel' do
     it 'returns approximate relationship between two colors' do
       w = described_class

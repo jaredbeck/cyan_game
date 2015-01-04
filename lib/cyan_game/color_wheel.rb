@@ -30,12 +30,6 @@ module CyanGame
         end
       end
 
-      # Given RGB values, return position on color wheel, in
-      # radians, where red is 0.
-      def rgb_to_hue(r, g, b)
-        ::Color::RGB.new(r, g, b).to_hsl.hue * Math::PI / 180
-      end
-
       # Given `hue` in radians
       def hue_to_rgb(hue)
         hue_degrees = hue * 180 / Math::PI
