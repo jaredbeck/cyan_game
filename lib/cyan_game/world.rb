@@ -31,10 +31,6 @@ module CyanGame
       @entities.each do |e| e.move(window, @t) end
     end
 
-    def change_player_color
-      @player.change_color
-    end
-
     def draw
       @player.draw
       @entities.each(&:draw)

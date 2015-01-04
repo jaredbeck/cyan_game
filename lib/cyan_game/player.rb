@@ -29,15 +29,6 @@ module CyanGame
       @vel_y += 5 * dy
     end
 
-    def change_color
-      new_hue = @color.hue + 2 * Math::PI / 3
-      if new_hue > TWO_PI
-        new_hue -= TWO_PI
-      end
-      r, g, b = ColorWheel.hue_to_rgb(new_hue)
-      @color = Color.new(r, g, b)
-    end
-
     def move(window)
       # accelerate
       @x += @vel_x

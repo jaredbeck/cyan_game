@@ -89,8 +89,6 @@ module CyanGame
             else
               raise Errors::InvalidGameState
           end
-        when Gosu::KbSpace
-          @world.change_player_color
         else
           case @state
             when STATE_WORLD_READY
