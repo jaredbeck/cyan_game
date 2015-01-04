@@ -13,15 +13,6 @@ module CyanGame
     end
     alias_method :eql?, :==
 
-      # `pack` returns a "packed" binary string.  The encoding of the
-    # string is set to UTF-8, but this "designation" neither changes
-    # nor implies anything about the packed string, and is only done
-    # so that the packed string may be easily concatenated with
-    # other strings, particularly string literals.
-    def pack
-      [@r, @g, @b].pack('C*').force_encoding('utf-8')
-    end
-
     def hue
       ColorWheel.rgb_to_hue(@r, @g, @b)
     end
