@@ -29,8 +29,8 @@ module CyanGame
       eval(fn_str) # TODO: Don't eval, it's insecure
     end
 
-    # Given angle `ø` returns polar radius as a decimal percent of window
-    def eval_radius(fn_str, ø)
+    # Given angle `θ` returns polar radius as a decimal percent of window
+    def eval_radius(fn_str, θ)
       eval(fn_str) # TODO: Don't eval, it's insecure
     end
 
