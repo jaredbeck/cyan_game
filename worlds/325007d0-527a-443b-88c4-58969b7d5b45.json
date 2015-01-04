@@ -6,7 +6,7 @@
       "color": { "r": 255, "g": 255, "b": 0 },
       "coordinates": {
         "radius": "(Math.sin(1.2 * ø) ** 2 + Math.cos(6 * ø) ** 3) / 2",
-        "angle": "t * π / 16 + π / 32"
+        "angle": "t * π / 32 + π / 64"
       },
       "diameter": 50
     },
@@ -15,7 +15,7 @@
       "color": { "r": 255, "g": 255, "b": 0 },
       "coordinates": {
         "radius": "(Math.sin(1.2 * ø) ** 2 + Math.cos(6 * ø) ** 3) / 2",
-        "angle": "t * π / 16 + 2 * π / 32"
+        "angle": "t * π / 32 + 2 * π / 64"
       },
       "diameter": 50
     },
@@ -24,7 +24,7 @@
       "color": { "r": 255, "g": 255, "b": 0 },
       "coordinates": {
         "radius": "(Math.sin(1.2 * ø) ** 2 + Math.cos(6 * ø) ** 3) / 2",
-        "angle": "t * π / 16 + 3 * π / 32"
+        "angle": "t * π / 32 + 3 * π / 64"
       },
       "diameter": 50
     },
@@ -33,7 +33,7 @@
       "color": { "r": 255, "g": 255, "b": 0 },
       "coordinates": {
         "radius": "(Math.sin(1.2 * ø) ** 2 + Math.cos(6 * ø) ** 3) / 2",
-        "angle": "t * π / 16 + 4 * π / 32"
+        "angle": "t * π / 32 + 4 * π / 64"
       },
       "diameter": 50
     },
@@ -42,7 +42,7 @@
       "color": { "r": 255, "g": 0, "b": 255 },
       "coordinates": {
         "radius": "(Math.sin(1.2 * ø) ** 2 + Math.cos(6 * ø) ** 3) / 2",
-        "angle": "t * π / 16 + 5 * π / 32"
+        "angle": "t * π / 32 + 5 * π / 64"
       },
       "diameter": 50
     },
@@ -51,7 +51,7 @@
       "color": { "r": 255, "g": 0, "b": 255 },
       "coordinates": {
         "radius": "(Math.sin(1.2 * ø) ** 2 + Math.cos(6 * ø) ** 3) / 2",
-        "angle": "t * π / 16 + 6 * π / 32"
+        "angle": "t * π / 32 + 6 * π / 64"
       },
       "diameter": 50
     },
@@ -60,7 +60,7 @@
       "color": { "r": 255, "g": 0, "b": 255 },
       "coordinates": {
         "radius": "(Math.sin(1.2 * ø) ** 2 + Math.cos(6 * ø) ** 3) / 2",
-        "angle": "t * π / 16 + 7 * π / 32"
+        "angle": "t * π / 32 + 7 * π / 64"
       },
       "diameter": 50
     },
@@ -69,7 +69,7 @@
       "color": { "r": 255, "g": 0, "b": 255 },
       "coordinates": {
         "radius": "(Math.sin(1.2 * ø) ** 2 + Math.cos(6 * ø) ** 3) / 2",
-        "angle": "t * π / 16 + 8 * π / 32"
+        "angle": "t * π / 32 + 8 * π / 64"
       },
       "diameter": 50
     },
@@ -78,7 +78,7 @@
       "color": { "r": 0, "g": 255, "b": 255 },
       "coordinates": {
         "radius": "(Math.sin(1.2 * ø) ** 2 + Math.cos(6 * ø) ** 3) / 2",
-        "angle": "t * π / 16 + 9 * π / 32"
+        "angle": "t * π / 32 + 9 * π / 64"
       },
       "diameter": 50
     },
@@ -87,7 +87,7 @@
       "color": { "r": 0, "g": 255, "b": 255 },
       "coordinates": {
         "radius": "(Math.sin(1.2 * ø) ** 2 + Math.cos(6 * ø) ** 3) / 2",
-        "angle": "t * π / 16 + 10 * π / 32"
+        "angle": "t * π / 32 + 10 * π / 64"
       },
       "diameter": 50
     },
@@ -96,7 +96,7 @@
       "color": { "r": 0, "g": 255, "b": 255 },
       "coordinates": {
         "radius": "(Math.sin(1.2 * ø) ** 2 + Math.cos(6 * ø) ** 3) / 2",
-        "angle": "t * π / 16 + 11 * π / 32"
+        "angle": "t * π / 32 + 11 * π / 64"
       },
       "diameter": 50
     },
@@ -105,7 +105,7 @@
       "color": { "r": 0, "g": 255, "b": 255 },
       "coordinates": {
         "radius": "(Math.sin(1.2 * ø) ** 2 + Math.cos(6 * ø) ** 3) / 2",
-        "angle": "t * π / 16 + 12 * π / 32"
+        "angle": "t * π / 32 + 12 * π / 64"
       },
       "diameter": 50
     }
