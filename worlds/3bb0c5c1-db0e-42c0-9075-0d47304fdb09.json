@@ -5,7 +5,7 @@
       "comment": "yellow",
       "color": { "h": 60, "s": 100, "l": 50 },
       "coordinates": {
-        "radius": "Math.cos(4 * θ) / 2",
+        "radius": "Math.cos(3 * θ) / 2",
         "angle": "t * π / 32"
       },
       "diameter": 160
@@ -14,7 +14,7 @@
       "comment": "red",
       "color": { "h": 0, "s": 100, "l": 50 },
       "coordinates": {
-        "radius": "Math.cos(4 * θ) / 2",
+        "radius": "Math.cos(3 * θ) / 2",
         "angle": "t * π / 32 + π / 32"
       },
       "diameter": 160
@@ -23,7 +23,7 @@
       "comment": "magenta",
       "color": { "h": 300, "s": 100, "l": 50 },
       "coordinates": {
-        "radius": "Math.cos(4 * θ) / 2",
+        "radius": "Math.cos(3 * θ) / 2",
         "angle": "t * π / 32 + 2 * π / 32"
       },
       "diameter": 160
@@ -32,7 +32,7 @@
       "comment": "blue",
       "color": { "h": 240, "s": 100, "l": 50 },
       "coordinates": {
-        "radius": "Math.cos(4 * θ) / 2",
+        "radius": "Math.cos(3 * θ) / 2",
         "angle": "t * π / 32 + 3 * π / 32"
       },
       "diameter": 160
@@ -41,7 +41,7 @@
       "comment": "cyan",
       "color": { "h": 180, "s": 100, "l": 50 },
       "coordinates": {
-        "radius": "Math.cos(4 * θ) / 2",
+        "radius": "Math.cos(3 * θ) / 2",
         "angle": "t * π / 32 + 4 * π / 32"
       },
       "diameter": 160
@@ -50,7 +50,7 @@
       "comment": "green",
       "color": { "h": 120, "s": 100, "l": 50 },
       "coordinates": {
-        "radius": "Math.cos(4 * θ) / 2",
+        "radius": "Math.cos(3 * θ) / 2",
         "angle": "t * π / 32 + 5 * π / 32"
       },
       "diameter": 160
