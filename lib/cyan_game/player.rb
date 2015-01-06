@@ -4,7 +4,7 @@ require_relative 'entity'
 module CyanGame
   class Player < Entity
 
-    COLOR_ABSORPTION_RATE = 2.0 # degrees
+    COLOR_ABSORPTION_RATE = 0.5 # degrees
     TWO_PI = 2 * Math::PI
 
     def initialize(*args)
@@ -45,6 +45,11 @@ module CyanGame
 
     def score
       (@diameter * 1_000_000_000).to_i
+    end
+
+    def reverse
+      @vel_x = -@vel_x
+      @vel_y = -@vel_y
     end
 
   end

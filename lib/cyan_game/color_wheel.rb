@@ -5,8 +5,8 @@ module CyanGame
 
     # If healing is greater than damage, the game is easier.
     # Does that make it more fun?
-    DAMAGE  = -1
-    HEALING = +1.1
+    DAMAGE  = -3
+    HEALING = +1
 
     FULL_CIRCLE = 360
     QUARTER_CIRCLE = 90

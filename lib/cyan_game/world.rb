@@ -46,6 +46,8 @@ module CyanGame
       entity.diameter -= 1
       player.absorb_color_of(entity)
 
+      player.reverse
+
       # Remove entities with diameter 0
       @entities.delete_if { |e|
         e.diameter <= 0
