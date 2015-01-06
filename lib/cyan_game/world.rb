@@ -54,10 +54,6 @@ module CyanGame
       }
     end
 
-    def score
-      @player.score
-    end
-
     def update
       @t += 0.05
 

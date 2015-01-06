@@ -43,10 +43,6 @@ module CyanGame
       @vel_y *= 0.50
     end
 
-    def score
-      (@diameter * 1_000_000_000).to_i
-    end
-
     def reverse
       @vel_x = -@vel_x
       @vel_y = -@vel_y

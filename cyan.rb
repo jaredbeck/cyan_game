@@ -4,6 +4,7 @@ require 'pry'
 require_relative 'lib/cyan_game/quotations'
 require_relative 'lib/cyan_game/errors'
 require_relative 'lib/cyan_game/world'
+require_relative 'lib/cyan_game/timer'
 
 module CyanGame
   class Window < Gosu::Window
@@ -21,6 +22,7 @@ module CyanGame
       w = Gosu.available_width
       super(w, h, false)
       self.caption = 'Cyan'
+      restart_timer
       @quotations = Quotations.new
       @font = Gosu::Font.new(self, Gosu::default_font_name, 20)
       @world_file = world_file
@@ -37,7 +39,7 @@ module CyanGame
         when STATE_PLAY
           @world.update
           if @world.victory?
-            @state = STATE_VICTORY
+            victory
           elsif @world.game_over?
             @state = STATE_GAME_OVER
           end
@@ -59,7 +61,7 @@ module CyanGame
           draw_centered_text('We\'ll meet again someday soon.', 0, +20)
         when STATE_VICTORY
           draw_centered_text('VICTORY!', 0, -20)
-          draw_centered_text("Score: #{number_to_delimited(@world.score)}", 0, 0)
+          draw_centered_text("Score: #{@timer.to_s}", 0, 0)
           draw_centered_text('Is this what we wished for?', 0, +40)
         else
           raise Errors::InvalidGameState
@@ -96,6 +98,7 @@ module CyanGame
             when STATE_GAME_OVER, STATE_VICTORY
               create_world(@world_file)
               ready
+              restart_timer
             else
               # noop
           end
@@ -106,8 +109,13 @@ module CyanGame
       @world = World.new(self, File.new(world_file))
     end
 
+    def pause_timer
+      @timer.pause
+    end
+
     def play
       @state = STATE_PLAY
+      resume_timer
     end
 
     def random_world
@@ -125,10 +133,28 @@ module CyanGame
     def ready
       @quotation = @quotations.sample
       @state = STATE_WORLD_READY
+      pause_timer if timer_started?
+    end
+
+    def restart_timer
+      @timer = Timer.new
+    end
+
+    def resume_timer
+      @timer.resume
     end
 
     def smallest_dimension
       @_smallest_dimension ||= [width, height].min
+    end
+
+    def timer_started?
+      @timer.started?
+    end
+
+    def victory
+      @state = STATE_VICTORY
+      pause_timer
     end
   end
 end
