@@ -8,7 +8,16 @@
         "radius": "0.2 + 0.01 * Math.sin(10 * θ)",
         "angle": "t / 2"
       },
-      "diameter": 160
+      "diameter": 120
+    },
+    {
+      "comment": "yellow",
+      "color": { "h": 60, "s": 100, "l": 50 },
+      "coordinates": {
+        "radius": "0.2 + 0.01 * Math.sin(10 * θ)",
+        "angle": "t / 2 + π / 4"
+      },
+      "diameter": 120
     },
     {
       "comment": "yellow",
@@ -17,7 +26,16 @@
         "radius": "0.2 + 0.01 * Math.sin(10 * θ)",
         "angle": "t / 2 + π / 2"
       },
-      "diameter": 160
+      "diameter": 120
+    },
+    {
+      "comment": "yellow",
+      "color": { "h": 60, "s": 100, "l": 50 },
+      "coordinates": {
+        "radius": "0.2 + 0.01 * Math.sin(10 * θ)",
+        "angle": "t / 2 + 3 * π / 4"
+      },
+      "diameter": 120
     },
     {
       "comment": "yellow",
@@ -26,44 +44,44 @@
         "radius": "0.2 + 0.01 * Math.sin(10 * θ)",
         "angle": "t / 2 + π"
       },
-      "diameter": 160
+      "diameter": 120
     },
     {
       "comment": "yellow",
       "color": { "h": 60, "s": 100, "l": 50 },
       "coordinates": {
         "radius": "0.2 + 0.01 * Math.sin(10 * θ)",
-        "angle": "t / 2 + 3 * π / 2"
-      },
-      "diameter": 160
-    },
-
-
-    {
-      "comment": "green",
-      "color": { "h": 120, "s": 100, "l": 50 },
-      "coordinates": {
-        "radius": "0.4 + 0.01 * Math.sin(10 * θ)",
-        "angle": "t / 2 + π / 4"
-      },
-      "diameter": 160
-    },
-    {
-      "comment": "green",
-      "color": { "h": 120, "s": 100, "l": 50 },
-      "coordinates": {
-        "radius": "0.4 + 0.01 * Math.sin(10 * θ)",
-        "angle": "t / 2 + 3 * π / 4"
-      },
-      "diameter": 160
-    },
-    {
-      "comment": "green",
-      "color": { "h": 120, "s": 100, "l": 50 },
-      "coordinates": {
-        "radius": "0.4 + 0.01 * Math.sin(10 * θ)",
         "angle": "t / 2 + 5 * π / 4"
       },
+      "diameter": 120
+    },
+    {
+      "comment": "yellow",
+      "color": { "h": 60, "s": 100, "l": 50 },
+      "coordinates": {
+        "radius": "0.2 + 0.01 * Math.sin(10 * θ)",
+        "angle": "t / 2 + 6 * π / 4"
+      },
+      "diameter": 120
+    },
+    {
+      "comment": "yellow",
+      "color": { "h": 60, "s": 100, "l": 50 },
+      "coordinates": {
+        "radius": "0.2 + 0.01 * Math.sin(10 * θ)",
+        "angle": "t / 2 + 7 * π / 4"
+      },
+      "diameter": 120
+    },
+
+
+    {
+      "comment": "green",
+      "color": { "h": 120, "s": 100, "l": 50 },
+      "coordinates": {
+        "radius": "0.4 + 0.01 * Math.sin(10 * θ)",
+        "angle": "t + π / 4"
+      },
       "diameter": 160
     },
     {
@@ -71,7 +89,25 @@
       "color": { "h": 120, "s": 100, "l": 50 },
       "coordinates": {
         "radius": "0.4 + 0.01 * Math.sin(10 * θ)",
-        "angle": "t / 2 + 7 * π / 4"
+        "angle": "t + 3 * π / 4"
+      },
+      "diameter": 160
+    },
+    {
+      "comment": "green",
+      "color": { "h": 120, "s": 100, "l": 50 },
+      "coordinates": {
+        "radius": "0.4 + 0.01 * Math.sin(10 * θ)",
+        "angle": "t + 5 * π / 4"
+      },
+      "diameter": 160
+    },
+    {
+      "comment": "green",
+      "color": { "h": 120, "s": 100, "l": 50 },
+      "coordinates": {
+        "radius": "0.4 + 0.01 * Math.sin(10 * θ)",
+        "angle": "t + 7 * π / 4"
       },
       "diameter": 160
     }
