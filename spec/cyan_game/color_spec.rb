@@ -6,25 +6,18 @@ describe CyanGame::Color do
     CyanGame::Color.new(r, g, b)
   end
 
-  let(:red)     { color(255, 000, 000) }
-  let(:blue)    { color(000, 000, 255) }
-  let(:green)   { color(000, 255, 000) }
-  let(:yellow)  { color(255, 255, 000) }
-  let(:magenta) { color(255, 000, 255) }
-  let(:cyan)    { color(000, 255, 255) }
+  let(:red)     { color(0,   100, 50) }
+  let(:yellow)  { color(60,  100, 50) }
+  let(:green)   { color(120, 100, 50) }
+  let(:cyan)    { color(180, 100, 50) }
+  let(:blue)    { color(240, 100, 50) }
+  let(:magenta) { color(300, 100, 50) }
 
-  describe '.hue' do
-    it 'returns position on wheel, in radians' do
-
-      # primary
-      expect(red.hue).to be_within(0.01).of(0)
-      expect(green.hue).to be_within(0.01).of(2 * Math::PI / 3)
-      expect(blue.hue).to be_within(0.01).of(4 * Math::PI / 3)
-
-      # secondary
-      expect(yellow.hue).to be_within(0.01).of(Math::PI / 3)
-      expect(cyan.hue).to be_within(0.01).of(3 * Math::PI / 3)
-      expect(magenta.hue).to be_within(0.01).of(5 * Math::PI / 3)
+  describe '.to_i' do
+    it 'returns 32-bit unsigned RGBA integer' do
+      expect(red.to_i).to eq(0xffff0000)
+      expect(green.to_i).to eq(0xff00ff00)
+      expect(blue.to_i).to eq(0xff0000ff)
     end
   end
 end
