@@ -61,8 +61,7 @@ module CyanGame
           draw_centered_text('We\'ll meet again someday soon.', 0, +20)
         when STATE_VICTORY
           draw_centered_text('VICTORY!', 0, -20)
-          draw_centered_text("Score: #{@timer.to_s}", 0, 0)
-          draw_centered_text('Is this what we wished for?', 0, +40)
+          draw_centered_text("#{@timer.to_s}", 0, 0)
         else
           raise Errors::InvalidGameState
       end
