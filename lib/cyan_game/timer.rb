@@ -23,7 +23,7 @@ module CyanGame
     def to_s
       minutes = (@sec.to_f / 60).floor
       sec = @sec - (minutes * 60)
-      "#{minutes}:#{sec.floor}"
+      '%02d:%02d' % [minutes, sec.floor]
     end
 
   end

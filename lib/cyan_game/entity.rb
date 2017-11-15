@@ -6,8 +6,7 @@ module CyanGame
     attr_accessor :color, :diameter
     attr_reader :coordinates, :x, :y
 
-    def initialize(window, attr = {})
-      @window = window
+    def initialize(attr = {})
       @x = @y = @vel_x = @vel_y = 0.0
       @z = 0.9
       unless attr.empty?
@@ -16,7 +15,7 @@ module CyanGame
         @coordinate_fns = attr['coordinates']
         @diameter = attr['diameter']
       end
-      @circle = Circle.new(window)
+      @circle = Circle.new
     end
 
     def draw

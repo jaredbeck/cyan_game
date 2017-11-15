@@ -1,6 +1,5 @@
 require 'active_support'
 require 'gosu'
-require 'pry'
 require_relative 'lib/cyan_game/quotations'
 require_relative 'lib/cyan_game/errors'
 require_relative 'lib/cyan_game/world'

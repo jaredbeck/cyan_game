@@ -6,8 +6,8 @@ module CyanGame
     CIRCLE_250 = 'data/circle_250.png'
     IMAGE_DIAMETER = 250
 
-    def initialize(window)
-      @image = Gosu::Image.new(window, CIRCLE_250, false)
+    def initialize
+      @image = Gosu::Image.new(CIRCLE_250, false)
     end
 
     # `draw` the image at the current position.  Happily, gosu

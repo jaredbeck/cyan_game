@@ -16,7 +16,7 @@ module CyanGame
       w = window.width
       h = window.height
 
-      @player = Player.new(window)
+      @player = Player.new
       @player.warp(w / 2, h / 2)
 
       parsed = JSON.parse(file.read)
@@ -24,10 +24,7 @@ module CyanGame
       @subtitle = parsed['subtitle']
       window.caption = @title
 
-      @entities = parsed['entities'].map do |e|
-        Entity.new(window, e)
-      end
-
+      @entities = parsed['entities'].map { |e| Entity.new(e) }
       @entities.each do |e| e.move(window, @t) end
     end
 
